@@ -1,5 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import ImageUploader from "./components/ImageUploader.vue";
+
+function onAddedImage(imageFile: any) {
+  console.log(imageFile);
+}
 </script>
 
 <template>
@@ -11,7 +15,8 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+
+  <image-uploader :on-added-image="onAddedImage" />
 </template>
 
 <style scoped>
