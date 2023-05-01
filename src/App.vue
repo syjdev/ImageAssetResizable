@@ -1,8 +1,25 @@
 <script setup lang="ts">
 import ImageUploader from "./components/ImageUploader.vue";
+import axios from "axios";
 
 function onAddedImage(imageFile: any) {
   console.log(imageFile);
+  var url = URL.createObjectURL(imageFile);
+  axios
+    .get(url, {
+      responseType: "blob",
+    })
+    .then((response) => {
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "compressed_" + imageFile.name); //or any other extension
+      document.body.appendChild(link);
+      link.click();
+    })
+    .catch((exception) => {
+      alert("파일 다운로드 실패");
+    });
 }
 </script>
 
