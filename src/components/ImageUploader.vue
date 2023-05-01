@@ -1,26 +1,30 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, PropType } from "vue";
 
-// defineProps<{ msg: string }>()
+const props = defineProps({
+  onAddedImage: {
+    type: Object as PropType<(imageFile: ImageFile) => void>,
+    required: true,
+  },
+});
 
-const count = ref(0);
 const imageFile = ref<ImageFile>();
+const isDragging = ref(false);
 
-function onDragenter(event: DragEvent) {
-  console.log(event);
-}
+function onDragenter(event: DragEvent) {}
 
 function onDragleave(event: DragEvent) {
-  console.log(event);
+  isDragging.value = false;
 }
 
 function onDragover(event: DragEvent) {
   event.preventDefault();
+  isDragging.value = true;
 }
 
 async function onDrop(event: DragEvent) {
   event.preventDefault();
-  // this.isDragged = false;
+
   const files = event.dataTransfer?.files;
   if (files) {
     var file: ImageFile = files[0];
@@ -28,8 +32,9 @@ async function onDrop(event: DragEvent) {
     file.src = fileData;
 
     imageFile.value = file;
-    console.log(file);
+    props.onAddedImage(file);
   }
+  isDragging.value = false;
 }
 
 interface HTMLInputEvent extends Event {
@@ -49,7 +54,7 @@ async function onInputtedFileChanged(event: Event) {
     file.src = fileData;
 
     imageFile.value = file;
-    console.log(file);
+    props.onAddedImage(file);
   }
 }
 
@@ -65,40 +70,47 @@ async function readFile(file: File) {
 </script>
 
 <template>
-  <div class="card">
-    <button type="button" @click="count++">count is {{ count + count }}</button>
-    <p>이미지를 이곳으로 드래그 해주세요.</p>
-  </div>
+  <div style="text-align: center; display: inline-block">
+    <div
+      class="row"
+      @dragenter="onDragenter"
+      @dragleave="onDragleave"
+      @dragover="onDragover"
+      @drop="onDrop"
+      style="height: 300px; width: 300px; background-color: cyan"
+    >
+      <img
+        v-if="imageFile"
+        class="row"
+        :src="imageFile?.src"
+        style="width: 100%; height: 100%"
+      />
+    </div>
 
-  <div
-    class="file-upload-container"
-    @dragenter="onDragenter"
-    @dragleave="onDragleave"
-    @dragover="onDragover"
-    @drop="onDrop"
-    style="height: 300px; width: 300px; background-color: cyan"
-  >
     <input
+      class="hidden-input"
       type="file"
-      ref="fileInput"
-      class="file-upload-input"
+      id="fileInput"
       @change="onInputtedFileChanged"
-      multiple
     />
-  </div>
 
-  <img :src="imageFile?.src" style="width: 100px; height: 100px" />
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+    <label for="fileInput" class="file-label">
+      <div v-if="isDragging">Release to drop files here.</div>
+      <div v-else>Drop files here or <u>click here</u> to upload.</div>
+    </label>
+  </div>
 </template>
 
 <style scoped>
 .read-the-docs {
   color: #888;
+}
+
+.hidden-input {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
 }
 </style>
