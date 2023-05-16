@@ -1,17 +1,30 @@
 <script setup lang="ts">
+import { ref } from "vue";
+
 import ImageUploader from "./components/ImageUploader.vue";
 import axios from "axios";
 
-function onAddedImage(imageFile: any) {
+import imageCompression from "browser-image-compression";
+
+const compressedImageUrl = ref("");
+
+async function onAddedImage(imageFile: any) {
   console.log(imageFile);
-  var url = URL.createObjectURL(imageFile);
+
+  const options = {
+    initialQuality: 0.5,
+  };
+
+  const result = await imageCompression(imageFile, options);
+
   axios
-    .get(url, {
+    .get(URL.createObjectURL(result), {
       responseType: "blob",
     })
     .then((response) => {
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
+      compressedImageUrl.value = url;
       link.href = url;
       link.setAttribute("download", "compressed_" + imageFile.name); //or any other extension
       document.body.appendChild(link);
@@ -33,7 +46,20 @@ function onAddedImage(imageFile: any) {
     </a>
   </div>
 
-  <image-uploader :on-added-image="onAddedImage" />
+  <div>
+    <image-uploader :on-added-image="onAddedImage" />
+
+    <div style="text-align: center; display: inline-block; margin-left: 4px">
+      <div style="width: 300px; height: 300px; background-color: aquamarine">
+        <img
+          :src="compressedImageUrl"
+          style="max-width: 100%; max-height: 100%"
+        />
+      </div>
+
+      <div>Compressed Image</div>
+    </div>
+  </div>
 </template>
 
 <style scoped>

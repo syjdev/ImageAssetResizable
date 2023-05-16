@@ -83,7 +83,7 @@ async function readFile(file: File) {
         v-if="imageFile"
         class="row"
         :src="imageFile?.src"
-        style="width: 100%; height: 100%"
+        style="max-width: 100%; max-height: 100%"
       />
     </div>
 
