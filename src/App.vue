@@ -31,7 +31,7 @@ package-lock.json    </div> -->
     >
       <a href="./" target="_blank" style="height: 18px; margin-left: 16px">
         <img
-          src="~/assets/convertly_bi_2x.png"
+          src="./assets/convertly_bi_2x.png"
           style="width: 101.12px; height: 18px"
         />
       </a>
@@ -46,7 +46,7 @@ package-lock.json    </div> -->
         "
       >
         <img
-          src="~/assets/home_icon_2x.png"
+          src="./assets/home_icon_2x.png"
           style="width: 24px; height: 24px"
         />
         <p
@@ -74,7 +74,7 @@ package-lock.json    </div> -->
         "
       >
         <img
-          src="~/assets/compress_icon_2x.png"
+          src="./assets/compress_icon_2x.png"
           style="width: 24px; height: 24px"
         />
         <p
@@ -137,7 +137,7 @@ package-lock.json    </div> -->
         <div style="display: flex; flex-direction: row">
           <div style="width: 200px">
             <img
-              src="~/assets/clock_badge_2x.png"
+              src="./assets/clock_badge_2x.png"
               style="width: 32px; height: 32px"
             />
 
@@ -177,7 +177,7 @@ package-lock.json    </div> -->
 
           <div style="width: 200px; margin-left: 162px">
             <img
-              src="~/assets/check_badge_2x.png"
+              src="./assets/check_badge_2x.png"
               style="width: 32px; height: 32px"
             />
 
@@ -216,7 +216,7 @@ package-lock.json    </div> -->
 
           <div style="width: 200px; margin-left: 162px">
             <img
-              src="~/assets/clock_badge_2x.png"
+              src="./assets/clock_badge_2x.png"
               style="width: 32px; height: 32px"
             />
 
@@ -257,7 +257,7 @@ package-lock.json    </div> -->
         <div style="display: flex; flex-direction: row; margin-top: 62px">
           <div style="width: 200px">
             <img
-              src="~/assets/globe_badge_2x.png"
+              src="./assets/globe_badge_2x.png"
               style="width: 32px; height: 32px"
             />
 
@@ -296,7 +296,7 @@ package-lock.json    </div> -->
 
           <div style="width: 200px; margin-left: 162px">
             <img
-              src="~/assets/heart_badge_2x.png"
+              src="./assets/heart_badge_2x.png"
               style="width: 32px; height: 32px"
             />
 
@@ -335,7 +335,7 @@ package-lock.json    </div> -->
 
           <div style="width: 200px; margin-left: 162px">
             <img
-              src="~/assets/document_badge_2x.png"
+              src="./assets/document_badge_2x.png"
               style="width: 32px; height: 32px"
             />
 
