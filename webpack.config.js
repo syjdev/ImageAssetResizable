@@ -15,6 +15,7 @@ const outputPath = resolve(__dirname, "./dist");
 
 module.exports = {
   mode: "development",
+  devtool: "source-map",
   entry: resolve(__dirname, "./src/main.ts"),
   output: {
     filename: "js/[name].[contenthash].js",
@@ -26,17 +27,14 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js", ".vue", ".json"],
     alias: {
-      vue: "@vue/runtime-dom",
+      "~": path.resolve(__dirname, "src"),
+      assets: path.resolve(__dirname, "src/assets"),
     },
   },
 
   devServer: {
     port: 8080,
-    historyApiFallback: true,
-
-    static: {
-      directory: resolve(__dirname, "dist"),
-    },
+    hot: true,
   },
 
   stats: "errors-warnings",
@@ -59,22 +57,13 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
-        loader: "file-loader",
-        options: {
-          name: "[name].[ext]",
-          outputPath: "images",
-        },
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: "file-loader",
       },
     ],
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development"),
-      __VUE_OPTIONS_API__: true,
-      __VUE_PROD_DEVTOOLS__: false,
-    }),
     new HtmlPlugin({
       template: resolve(__dirname, "./index.html"),
     }),

@@ -1,7 +1,6 @@
 <script setup lang="ts">
-// import { ref, PropType } from "vue";
-import { ref } from "vue";
-// import ImageCompressor from "./ImageUploader.vue"; // 이거 경로 지정법 고쳐야 함.
+import { ref, PropType } from "vue";
+import ImageCompressor from "./ImageUploader.vue"; // 이거 경로 지정법 고쳐야 함.
 
 // import ImageCompressor from "/src/services/ImageCompressor.ts";
 
@@ -98,7 +97,7 @@ async function readFile(file: File) {
     "
   >
     <img
-      src="/src/assets/drop_files_here_2x.png"
+      src="~/assets/drop_files_here_2x.png"
       style="width: 327px; height: 240px; margin-left: -15.5px"
     />
 
@@ -112,6 +111,7 @@ async function readFile(file: File) {
           line-height: 150%;
           margin-top: 0px;
           margin-bottom: 0px;
+          color: white;
         "
       >
         Drop Files Here
@@ -138,7 +138,7 @@ async function readFile(file: File) {
           "
         >
           <img
-            src="/src/assets/choose_files_icon_2x.png"
+            src="~/assets/choose_files_icon_2x.png"
             style="width: 20px; height: 20px; margin-left: 8px"
           />
 

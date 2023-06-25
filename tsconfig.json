@@ -1,19 +1,23 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "esModuleInterop": true,
-    "noImplicitAny": true,
-    "noUnusedLocals": true,
-    "moduleResolution": "Node",
+    "allowJs": true,
     "module": "ESNext",
-    "target": "ES5",
+    "target": "ES6",
+    "forceConsistentCasingInFileNames": true,
     "lib": ["DOM", "ESNext"],
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./src/types/*"]
-    }
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "sourceMap": true,
+    "jsx": "preserve",
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["./src/**/*.ts", "./src/**/*.vue"]
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.d.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.vue"
+  ]
 }
 
 // "target": "esnext",
