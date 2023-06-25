@@ -1,18 +1,54 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
     "strict": true,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
-    "noEmit": true
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "Node",
+    "module": "ESNext",
+    "target": "ES5",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./src/types/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["./src/**/*.ts", "./src/**/*.vue"]
 }
+
+// "target": "esnext",
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     "strict": true,
+//     "jsx": "preserve",
+//     "esModuleInterop": true,
+//     "allowSyntheticDefaultImports": true
+
+// {
+//   // `baseUrl` must be placed on the extending configuration in devland, or paths won't be recognized
+//   "compilerOptions": {
+//     "baseUrl": ".",
+//     "allowJs": true,
+//     "esModuleInterop": true,
+//     "module": "esnext",
+//     "moduleResolution": "node",
+//     // Address https://github.com/quasarframework/app-extension-typescript/issues/36
+//     "noEmit": true,
+//     "resolveJsonModule": true,
+//     // Avoid cross-os errors due to inconsistent file casing
+//     "forceConsistentCasingInFileNames": true,
+//     "sourceMap": true,
+//     "strict": true,
+//     "target": "es6",
+//     // Fix Volar issue https://github.com/johnsoncodehk/volar/issues/1153
+//     "jsx": "preserve",
+//     // Quasar-defined webpack aliases
+//     "paths": {
+//       "src/*": ["src/*"],
+//       "components/*": ["src/components/*"]
+//     }
+//   },
+//   // Avoid files copied into 'dist' folder (eg. a `.d.ts` file inside `src-ssr` folder)
+//   // to be evaluated by TS when their original files has been updated
+//   "exclude": ["dist", "node_modules"]
+// }
