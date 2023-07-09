@@ -131,7 +131,8 @@ package-lock.json    </div> -->
           Reduce video file size online
         </p>
       </div>
-      <FileUploadPanel></FileUploadPanel>
+
+      <FileUploadPanel />
 
       <div style="margin-top: 124px">
         <div style="display: flex; flex-direction: row">
