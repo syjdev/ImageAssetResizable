@@ -1,18 +1,39 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "jsx": "preserve",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
     "skipLibCheck": true,
-    "noEmit": true
-  },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "useUnknownInCatchVariables": false,
+    "emitDecoratorMetadata": true,
+
+    "allowJs": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": false,
+
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+
+    "jsx": "preserve",
+    "lib": ["DOM", "ES2019"],
+
+    "paths": {
+      "app/*": ["*"],
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"]
+    }
+  }
+  // "include": [
+  //   "src/**/*.ts", // 모든 ts 파일을 포함
+  //   "src/**/*.tsx",
+  //   "src/**/*.d.ts",
+  //   "src/**/*.vue" // 모든 vue 파일을 포함
+  // ]
 }
