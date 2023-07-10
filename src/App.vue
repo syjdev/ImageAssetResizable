@@ -1,25 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import FileUploadPanel from "./components/FileUploadPanel.vue";
-
-const compressedImageUrl = ref("");
-
-async function onAddedImage(imageFile: File) {
-  console.log(imageFile);
-}
 </script>
 
 <template>
   <div class="container" style="background-color: white">
-    <!-- <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="/vite.svg" class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://vuejs.org/" target="_blank">
-        <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-      </a>
-package-lock.json    </div> -->
-
     <!-- 최상한 헤더 부분 -->
     <div
       style="
@@ -374,42 +359,12 @@ package-lock.json    </div> -->
           </div>
         </div>
       </div>
-
-      <image-uploader :on-added-image="onAddedImage" />
-
-      <div style="text-align: center; display: inline-block; margin-left: 4px">
-        <div style="width: 300px; height: 300px; background-color: aquamarine">
-          <img
-            :src="compressedImageUrl"
-            style="max-width: 100%; max-height: 100%"
-          />
-        </div>
-
-        <div>Compressed Image</div>
-      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-
 .container {
   flex-direction: row;
-}
-
-.header {
-  flex-direction: column;
 }
 </style>
