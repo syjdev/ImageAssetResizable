@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import FileUploadPanel from "./components/FileUploadPanel.vue";
+import FilePanel from "./components/FilePanel.vue";
 </script>
 
 <template>
@@ -117,7 +117,7 @@ import FileUploadPanel from "./components/FileUploadPanel.vue";
         </p>
       </div>
 
-      <FileUploadPanel />
+      <FilePanel />
 
       <div style="margin-top: 124px">
         <div style="display: flex; flex-direction: row">
