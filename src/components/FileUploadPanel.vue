@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, PropType } from "vue";
-import ImageCompressor from "./ImageUploader.vue"; // 이거 경로 지정법 고쳐야 함.
-
-// import ImageCompressor from "/src/services/ImageCompressor.ts";
+import ImageCompressor from "src/services/ImageCompressor";
+import FileLinkMaker from "src/services/FileLinkMaker";
 
 // const props = defineProps({
 //   onAddedImage: {
@@ -36,6 +35,7 @@ async function onDrop(event: DragEvent) {
 
     imageFile.value = file;
     // props.onAddedImage(file);
+    onAddedImagefile(file);
   }
   isDragging.value = false;
 }
@@ -58,10 +58,22 @@ async function onInputtedFileChanged(event: Event) {
 
     imageFile.value = file;
     // props.onAddedImage(file);
+    onAddedImagefile(file);
   }
 }
 
-function onAddedImagefile(imageFile: ImageFile) {}
+async function onAddedImagefile(imageFile: ImageFile) {
+  const compressedImageFile = await ImageCompressor.compressWithQuality(
+    imageFile,
+    0.5
+  );
+
+  const madeLink = await FileLinkMaker.makeLink(compressedImageFile);
+
+  if (madeLink instanceof HTMLAnchorElement) {
+    madeLink.click();
+  }
+}
 
 async function readFile(file: File) {
   return new Promise((resolve, reject) => {

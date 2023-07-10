@@ -14,17 +14,17 @@ module.exports = (env, argv) => {
   return {
     mode: isDevelopmentPhase ? "development" : "production",
     devtool: isDevelopmentPhase ? "source-map" : false,
-    entry: resolve(__dirname, "./src/main.ts"),
+    entry: resolve(__dirname, "src/main.ts"),
+
     output: {
       filename: "js/[name].[contenthash].js",
-      chunkFilename: "js/[name].[contenthash].js",
       path: outputPath,
     },
 
     resolve: {
       extensions: [".ts", ".js", ".vue", ".json"],
       alias: {
-        "~": path.resolve(__dirname, "src"),
+        src: path.resolve(__dirname, "src"),
         assets: path.resolve(__dirname, "src/assets"),
       },
     },

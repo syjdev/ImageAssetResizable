@@ -1,22 +1,39 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "noImplicitReturns": false,
+    "skipLibCheck": true,
+    "useUnknownInCatchVariables": false,
+    "emitDecoratorMetadata": true,
+
     "allowJs": true,
-    "module": "ESNext",
-    "target": "ES6",
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["DOM", "ESNext"],
-    "moduleResolution": "node",
     "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": false,
+
+    "resolveJsonModule": true,
     "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+
     "jsx": "preserve",
-    "allowSyntheticDefaultImports": true
-  },
-  "include": [
-    "./src/**/*.ts",
-    "./src/**/*.d.ts",
-    "./src/**/*.tsx",
-    "./src/**/*.vue"
-  ]
+    "lib": ["DOM", "ES2019"],
+
+    "paths": {
+      "app/*": ["*"],
+      "src/*": ["src/*"],
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"]
+    }
+  }
+  // "include": [
+  //   "src/**/*.ts", // 모든 ts 파일을 포함
+  //   "src/**/*.tsx",
+  //   "src/**/*.d.ts",
+  //   "src/**/*.vue" // 모든 vue 파일을 포함
+  // ]
 }

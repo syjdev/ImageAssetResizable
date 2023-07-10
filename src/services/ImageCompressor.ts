@@ -1,53 +1,37 @@
-// <script setup lang="ts">
-// import { ref } from "vue";
+import imageCompression from "browser-image-compression";
 
-// import ImageUploader from "./components/ImageUploader.vue";
-// import axios from "axios";
+interface ImageFile extends File {
+  src?: string;
+}
 
-// import imageCompression from "browser-image-compression";
+class ImageCompressor {
+  static async compressWithQuality(
+    file: ImageFile,
+    quality: number = 0.5
+  ): Promise<File> {
+    if (quality > 0 && quality < 1.0) {
+    }
 
-// const compressedImageUrl = ref("");
+    const options = {
+      initialQuality: 0.3,
+    };
 
-// async function onAddedImage(imageFile: any) {
-//   console.log(imageFile);
+    return imageCompression(file, options);
+  }
 
-//   const options = {
-//     initialQuality: 0.5,
-//   };
+  static async compressWithDesiredSize(
+    file: ImageFile,
+    desiredSize: number
+  ): Promise<File> {
+    if (desiredSize > 0) {
+    }
 
-//   const result = await imageCompression(imageFile, options);
+    const options = {
+      initialQuality: 0.3,
+    };
 
-//   axios
-//     .get(URL.createObjectURL(result), {
-//       responseType: "blob",
-//     })
-//     .then((response) => {
-//       const url = window.URL.createObjectURL(new Blob([response.data]));
-//       const link = document.createElement("a");
-//       compressedImageUrl.value = url;
-//       link.href = url;
-//       link.setAttribute("download", "compressed_" + imageFile.name); //or any other extension
-//       document.body.appendChild(link);
-//       // link.click();
-//     })
-//     .catch((exception) => {
-//       alert("파일 다운로드 실패");
-//     });
-// }
-// </script>
+    return imageCompression(file, options);
+  }
+}
 
-// import imageCompression from "browser-image-compression";
-
-// interface ImageFile extends File {
-//   src?: string;
-// }
-
-// class ImageCompressor {
-//   static async compress(file: ImageFile) {
-//     const options = {
-//       initialQuality: 0.5,
-//     };
-
-//     return imageCompression(file, options);
-//   }
-// }
+export default ImageCompressor;
